@@ -522,6 +522,99 @@
   transform: translateX(-50%);
 }
 
+/* ---------- Service Accordion ---------- */
+.service-accordion {
+  margin-top: 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  overflow: hidden;
+}
+
+.service-accordion__trigger {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 2rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.service-accordion__trigger:hover {
+  background-color: var(--color-soft);
+}
+
+.service-accordion__trigger::-webkit-details-marker,
+.service-accordion__trigger::marker {
+  display: none;
+}
+
+.service-accordion__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+}
+
+.service-accordion__hint {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.service-accordion__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-accordion__icon::before,
+.service-accordion__icon::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+}
+
+.service-accordion__icon::before {
+  width: 14px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.service-accordion__icon::after {
+  width: 2px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.service-accordion[open] .service-accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.service-accordion[open] .service-accordion__hint {
+  display: none;
+}
+
+.service-accordion__body {
+  padding: 0 2rem 2rem;
+}
+
+.service-accordion__body .service-grid--compact {
+  margin-top: 0;
+}
+
 /* ---------- Compact Service Grid (Web Services) ---------- */
 .service-grid--compact {
   grid-template-columns: repeat(2, 1fr);
