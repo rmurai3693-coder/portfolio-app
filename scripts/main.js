@@ -65,13 +65,6 @@ if (contactForm) {
   const submitButton = contactForm.querySelector('[data-contact-submit]');
   let endpoint = contactForm.getAttribute('data-endpoint') || '/api/contact';
 
-  if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
-    const fallbackEndpoint = contactForm.getAttribute('data-dev-endpoint');
-    if (fallbackEndpoint) {
-      endpoint = fallbackEndpoint;
-    }
-  }
-
   const setStatus = (type, message) => {
     if (!statusEl) return;
     statusEl.textContent = message || '';

@@ -7,12 +7,13 @@
     "dev": "nodemon server/index.js"
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "helmet": "^7.0.0",
-    "@sendgrid/mail": "^8.1.2",
-    "nodemailer": "^6.9.8"
+    "nodemailer": "^6.9.8",
+    "resend": "^6.9.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
