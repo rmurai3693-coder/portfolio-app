@@ -524,7 +524,7 @@
 
 /* ---------- Compact Service Grid (Web Services) ---------- */
 .service-grid--compact {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
 }
 
@@ -1111,7 +1111,6 @@
 .service-grid--compact [data-animate]:nth-child(2) { transition-delay: 0.08s; }
 .service-grid--compact [data-animate]:nth-child(3) { transition-delay: 0.16s; }
 .service-grid--compact [data-animate]:nth-child(4) { transition-delay: 0.24s; }
-.service-grid--compact [data-animate]:nth-child(5) { transition-delay: 0.32s; }
 
 .solve-grid [data-animate]:nth-child(2) { transition-delay: 0.08s; }
 .solve-grid [data-animate]:nth-child(3) { transition-delay: 0.16s; }
@@ -1132,8 +1131,9 @@
   }
 
   .service-grid--compact {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
   }
 
   .solve-grid {
