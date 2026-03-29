@@ -505,6 +505,55 @@
   width: 100%;
 }
 
+/* ---------- Service Category Title ---------- */
+.service-category-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--color-accent);
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---------- Compact Service Grid (Web Services) ---------- */
+.service-grid--compact {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.service-card--small {
+  padding: 1.8rem 1.5rem;
+  gap: 0.8rem;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.service-card--small h3 {
+  font-size: 0.9rem;
+}
+
+.service-card--small .service-price {
+  font-size: 1.2rem;
+}
+
+.service-card--small .service-desc {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.service-card--small .button--sm {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.75rem;
+}
+
 /* ---------- Solve (AI Menu) ---------- */
 .solve {
   background-color: var(--color-surface);
@@ -1059,6 +1108,10 @@
 /* stagger animation for grid children */
 .service-grid [data-animate]:nth-child(2) { transition-delay: 0.1s; }
 .service-grid [data-animate]:nth-child(3) { transition-delay: 0.2s; }
+.service-grid--compact [data-animate]:nth-child(2) { transition-delay: 0.08s; }
+.service-grid--compact [data-animate]:nth-child(3) { transition-delay: 0.16s; }
+.service-grid--compact [data-animate]:nth-child(4) { transition-delay: 0.24s; }
+.service-grid--compact [data-animate]:nth-child(5) { transition-delay: 0.32s; }
 
 .solve-grid [data-animate]:nth-child(2) { transition-delay: 0.08s; }
 .solve-grid [data-animate]:nth-child(3) { transition-delay: 0.16s; }
@@ -1076,6 +1129,11 @@
     grid-template-columns: 1fr;
     max-width: 480px;
     margin-inline: auto;
+  }
+
+  .service-grid--compact {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
   }
 
   .solve-grid {
@@ -1159,6 +1217,12 @@
 
   .service-card {
     padding: 2rem 1.5rem;
+  }
+
+  .service-grid--compact {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
   }
 
   .solve-grid {
