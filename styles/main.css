@@ -619,10 +619,9 @@
   margin-top: 3rem;
   padding-bottom: 0.8rem;
   border-bottom: 2px solid var(--color-accent);
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 /* ---------- Service Accordion ---------- */
