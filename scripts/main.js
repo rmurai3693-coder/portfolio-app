@@ -2,6 +2,29 @@
    Imuraa Portfolio — Main Script
    =================================================== */
 
+// --- Mobile hamburger menu ---
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('is-open');
+    hamburger.classList.toggle('is-active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+
+  // Close menu when a link is clicked
+  mobileMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'メニューを開く');
+    });
+  });
+}
+
 // --- Scroll animation (IntersectionObserver) ---
 const animateElements = document.querySelectorAll('[data-animate]');
 
