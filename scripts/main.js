@@ -1,40 +1,63 @@
-const header = document.querySelector('.site-header');
-const navToggle = document.querySelector('[data-nav-toggle]');
-const primaryNav = document.getElementById('primary-navigation');
+/* ===================================================
+   Imuraa Portfolio — Main Script
+   =================================================== */
 
-if (header && navToggle && primaryNav) {
-  const closeNav = () => {
-    header.setAttribute('data-nav-open', 'false');
-    navToggle.setAttribute('aria-expanded', 'false');
-  };
+// --- Scroll animation (IntersectionObserver) ---
+const animateElements = document.querySelectorAll('[data-animate]');
 
-  const openNav = () => {
-    header.setAttribute('data-nav-open', 'true');
-    navToggle.setAttribute('aria-expanded', 'true');
-  };
+if (animateElements.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  );
 
-  navToggle.addEventListener('click', () => {
-    const isOpen = header.getAttribute('data-nav-open') === 'true';
-    if (isOpen) {
-      closeNav();
-    } else {
-      openNav();
-    }
-  });
-
-  primaryNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      closeNav();
-    });
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeNav();
-    }
-  });
+  animateElements.forEach((el) => observer.observe(el));
 }
 
+// --- Header active nav link on scroll ---
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.header-nav a');
+
+if (sections.length > 0 && navLinks.length > 0) {
+  const onScroll = () => {
+    const scrollY = window.scrollY + 120;
+    sections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      if (scrollY >= top && scrollY < top + height) {
+        navLinks.forEach((link) => {
+          link.classList.toggle(
+            'is-active',
+            link.getAttribute('href') === `#${id}`
+          );
+        });
+      }
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// --- Smooth scroll for anchor links ---
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// --- Contact form ---
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
@@ -91,7 +114,7 @@ if (contactForm) {
       }
 
       contactForm.reset();
-      setStatus('is-success', '送信が完了しました。担当者より折り返しご連絡いたします。');
+      setStatus('is-success', '送信が完了しました。2〜3営業日以内にご返信いたします。');
     } catch (error) {
       setStatus('is-error', error.message);
     } finally {
